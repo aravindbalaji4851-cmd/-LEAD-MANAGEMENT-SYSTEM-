@@ -1,0 +1,83 @@
+# USER ENDPOINTS =====================================
+
+# user register api call
+###
+POST http://127.0.0.1:8000/accounts/register/
+Content-Type: application/json
+
+{
+    "username":"user1",
+    "password":"password@123",
+    "email":"user@gmail.com",
+    "phone":"8590456111"
+}
+
+# user jwt token call
+###
+POST http://127.0.0.1:8000/accounts/login/
+Content-Type: application/json
+
+{
+    "username":"user1",
+    "password":"password@123"
+}
+
+# user jwt token refresh call
+###
+POST http://127.0.0.1:8000/accounts/token/refresh/ 
+Content-Type: application/json
+
+{
+    "refresh": "REFERSH_TOKEN_HERE"
+}
+
+#user retrieval api call
+###
+GET http://127.0.0.1:8000/accounts/profile/
+Accept: application/json
+Authorization: Bearer JWT_TOKEN_HERE
+# list leads api call
+###
+GET http://127.0.0.1:8000/leads/
+Accept: application/json
+Authorization: Bearer JWT_TOKEN_HERE
+
+# creat lead api call
+### 
+POST http://127.0.0.1:8000/leads/
+Content-Type: application/json
+Authorization: Bearer JWT_TOKEN_HERE
+
+{
+    "name": "Anjali Nair",
+    "email": "anjali.nair@gmail.com",
+    "phone": "9123456780",
+    "company": "Creative Minds",
+    "source": "Social Media",
+    "status": "Contacted",
+    "description": "Enquired about software development services"
+}
+
+# lead retrieve api call
+###
+GET http://127.0.0.1:8000/leads/1/
+Accept: application/json
+Authorization: Bearer JWT_TOKEN_HERE
+
+
+# lead update api call
+###
+PATCH http://127.0.0.1:8000/leads/1/
+Content-Type: application/json
+Authorization: Bearer JWT_TOKEN_HERE
+
+{
+    "status": "Converted",
+    "description": "Successfully converted into a customer"
+}
+
+# lead delete api call
+###
+DELETE http://127.0.0.1:8000/leads/1/
+Accept: application/json
+Authorization: Bearer JWT_TOKEN_HERE
